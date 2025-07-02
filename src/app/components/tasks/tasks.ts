@@ -11,12 +11,24 @@ import { TaskItem } from "../task-item/task-item";
   templateUrl: './tasks.html',
   styleUrl: './tasks.css'
 })
-export class Tasks implements OnInit{
+export class Tasks implements OnInit {
   tasks: Task[] = [];
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+    this.taskService.getTasks()
+      .subscribe(tasks => {
+        this.tasks = tasks
+      });
+  }
+
+  deleteTask(task: Task) {
+    this.taskService
+      .deleteTask(task)
+      .subscribe(
+        () => {
+          this.tasks = this.tasks.filter((t) => t.id !== task.id)
+        })
   }
 }
