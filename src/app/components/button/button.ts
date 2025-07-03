@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
+  standalone: true,
   selector: 'app-button',
   imports: [ CommonModule],
   templateUrl: './button.html',
