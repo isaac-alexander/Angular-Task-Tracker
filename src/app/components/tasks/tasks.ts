@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,7 @@ import { AddTask } from "../add-task/add-task";
   templateUrl: './tasks.html',
   styleUrl: './tasks.css'
 })
-export class Tasks implements OnInit {
+export class Tasks {
   tasks: Task[] = [];
 
   constructor(private taskService: TaskService) { }
