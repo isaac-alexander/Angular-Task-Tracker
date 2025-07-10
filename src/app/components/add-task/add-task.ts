@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UiService } from '../../services/ui.service.';
@@ -12,12 +12,12 @@ import { Task } from '../../Task';
   templateUrl: './add-task.html',
   styleUrl: './add-task.css'
 })
-export class AddTask implements OnInit {
+export class AddTask {
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
-  text!: string;
-  day!: string;
+  text: string = '';
+  day: string = '';
   reminder: boolean = false;
-  showAddTask!: boolean;
+  showAddTask: boolean = false;
   subscription: Subscription;
 
   constructor(private uiService: UiService) {
@@ -26,9 +26,6 @@ export class AddTask implements OnInit {
       .subscribe((value) => (this.showAddTask = value));
   }
 
-  ngOnInit(): void {
-
-  }
 
   onSubmit() {
     if (!this.text) {
